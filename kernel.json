@@ -1,0 +1,8 @@
+{
+    "argv": ["python",
+             "~/.local/share/jupyter/kernels/c/c.py", "-f",
+             "{connection_file}"],
+    "display_name": "C",
+    "name": "C",
+    "language": "C"
+   }
