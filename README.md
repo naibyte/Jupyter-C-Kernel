@@ -1,7 +1,7 @@
 # A Simple C Kernel For Jupyter
 
 #### Installation
-* Assumes you have GCC installed.
+* Assuming you have GCC & Jupyter Lab installed.
 * Place ```c.py``` and ```kernel.json``` in the following path; create the "c" folder. ```/home/<user>/.local/share/jupyter/kernel/c/```
 * Refresh Jupyter and create a new C notebook.
 
