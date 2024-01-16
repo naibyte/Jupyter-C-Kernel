@@ -27,8 +27,7 @@ def compile_and_run(source_code):
 class C_Kernel(Kernel):
     implementation = 'C'
     implementation_version = '1.0'
-    language = 'C'  # will be used for
-                         # syntax highlighting
+    language = 'C'
     language_version = '3.6'
     language_info = {'name': 'C',
                      'mimetype': 'text/plain',
@@ -40,47 +39,31 @@ class C_Kernel(Kernel):
                     user_expressions=None,
                     allow_stdin=False):
 
+        ##############################
         output = compile_and_run(code)
+        ##############################
 
         if not silent:
-            # We send the standard output to the
-            # client.
             self.send_response(
                 self.iopub_socket,
                 'stream', {
                     'name': 'stdout',
-                    'data': 'hehe'
+                    'data': ''
                     }
             )
 
-            # We prepare the response with our rich
-            # data (the plot).
             content = {
                 'source': 'kernel',
-
-                # This dictionary may contain
-                # different MIME representations of
-                # the output.
                 'data': {
                     'text/plain': output
                 },
-
-                # We can specify the image size
-                # in the metadata field.
                 'metadata' : {
-                    #   'image/png' : {
-                    #     'width': 600,
-                    #     'height': 400
-                    #   }
                     }
             }
 
-            # We send the display_data message with
-            # the contents.
             self.send_response(self.iopub_socket,
                 'display_data', content)
 
-        # We return the exection results.
         return {'status': 'ok',
                 'execution_count':
                     self.execution_count,
